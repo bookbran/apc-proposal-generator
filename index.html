@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Authentication Screen -->
+    <div id="authContainer" class="auth-container">
+        <div class="auth-card">
+            <header>
+                <h1>My Todo List</h1>
+                <p class="subtitle">Stay organized and productive</p>
+            </header>
+
+            <div id="authForm" class="auth-form">
+                <h2>Sign In</h2>
+                <p class="auth-description">Enter your email to receive a magic link</p>
+                
+                <input 
+                    type="email" 
+                    id="emailInput" 
+                    placeholder="your@email.com" 
+                    autocomplete="email"
+                    required
+                >
+                <button id="authBtn">Send Magic Link</button>
+                
+                <div id="authMessage" class="auth-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Todo App (hidden until authenticated) -->
+    <div id="appContainer" class="container" style="display: none;">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>My Todo List</h1>
+                    <p class="subtitle">Stay organized and productive</p>
+                </div>
+                <div class="user-info">
+                    <span id="userEmail" class="user-email"></span>
+                    <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="input-section">
+            <input 
+                type="text" 
+                id="todoInput" 
+                placeholder="Add a new task..." 
+                autocomplete="off"
+            >
+            <button id="addBtn">Add Task</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <ul id="todoList" class="todo-list">
+            <!-- Todo items will be added here dynamically -->
+        </ul>
+
+        <div class="footer">
+            <span id="todoCount">0 tasks remaining</span>
+            <button id="clearCompleted">Clear Completed</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

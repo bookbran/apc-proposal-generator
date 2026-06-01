@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Agreement | A Portland Career & [Client Name]</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --university-navy: #16163f;
+            --transition-blue: #2DA3CB;
+            --accent-light: #e8f4f8;
+            --navy-soft: #2a2a5e;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: #e9ecef;
+            font-size: 9.5pt;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+
+        .page:last-of-type {
+            page-break-after: auto;
+        }
+
+        .top-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #16163f 0%, #16163f 60%, #2DA3CB 60%, #2DA3CB 100%);
+        }
+
+        .content-wrapper {
+            padding: 0.4in 0.6in 0.35in;
+        }
+
+        /* Header */
+        .agreement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--university-navy);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .company-name {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            letter-spacing: -0.4px;
+            margin-bottom: 4px;
+        }
+
+        .agreement-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            color: var(--transition-blue);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .date-stamp {
+            font-size: 8pt;
+            color: #888;
+            text-align: right;
+        }
+
+        .logo-container {
+            width: 85px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #2DA3CB, transparent);
+        }
+
+        /* Agreement intro */
+        .agreement-intro {
+            background: var(--accent-light);
+            padding: 16px 18px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            border-left: 4px solid var(--transition-blue);
+        }
+
+        .agreement-intro p {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Numbered sections */
+        .clause {
+            margin-bottom: 14px;
+        }
+
+        .clause-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 4px;
+        }
+
+        .clause p, .clause ul {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .clause ul {
+            margin-left: 18px;
+            margin-top: 4px;
+        }
+
+        .clause ul li {
+            margin-bottom: 3px;
+        }
+
+        .clause ul li::marker {
+            color: var(--transition-blue);
+        }
+
+        /* Highlight box for key financial terms */
+        .terms-highlight {
+            background: var(--university-navy);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 4px;
+            margin: 14px 0;
+        }
+
+        .terms-highlight .terms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 30px;
+        }
+
+        .terms-highlight .term-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terms-highlight .term-label {
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--transition-blue);
+            margin-bottom: 2px;
+        }
+
+        .terms-highlight .term-value {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: white;
+        }
+
+        .terms-highlight .term-note {
+            font-size: 8pt;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1px;
+        }
+
+        /* Services list */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+            margin-top: 6px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .check-icon {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            margin-top: 2px;
+        }
+
+        .check-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Page 2 header */
+        .page-2-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .page-2-header-text {
+            font-size: 9pt;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Signature Section */
+        .signature-section {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px solid var(--university-navy);
+        }
+
+        .signature-intro {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .signatures-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .signature-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signature-block-label {
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--transition-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .signature-canvas-wrapper {
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            background: #fafafa;
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .signature-canvas {
+            width: 100%;
+            height: 80px;
+            cursor: crosshair;
+            display: block;
+        }
+
+        .signature-canvas-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8pt;
+            color: #bbb;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .clear-sig-btn {
+            align-self: flex-end;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 7.5pt;
+            color: #888;
+            padding: 2px 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .clear-sig-btn:hover {
+            background: #f5f5f5;
+            color: #555;
+        }
+
+        .sig-field {
+            margin-bottom: 8px;
+        }
+
+        .sig-field label {
+            display: block;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #888;
+            margin-bottom: 2px;
+        }
+
+        .sig-field input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 9.5pt;
+            padding: 4px 0;
+            color: var(--text-primary);
+            background: transparent;
+            outline: none;
+        }
+
+        .sig-field input:focus {
+            border-bottom-color: var(--transition-blue);
+        }
+
+        /* Signature images (shown in PDF, hidden on screen) */
+        .signature-image {
+            display: none;
+            height: 80px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Download button area */
+        .download-section {
+            text-align: center;
+            margin: 30px auto;
+            max-width: 8.5in;
+        }
+
+        .download-btn {
+            background: var(--university-navy);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 11pt;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .download-btn:hover {
+            background: var(--navy-soft);
+        }
+
+        .download-btn:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        .download-hint {
+            font-size: 8.5pt;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .download-status {
+            font-size: 9pt;
+            color: var(--transition-blue);
+            margin-top: 8px;
+            min-height: 18px;
+        }
+
+        /* Page number */
+        .page-number {
+            position: absolute;
+            bottom: 0.25in;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 8pt;
+            color: #999;
+        }
+
+        /* Print / PDF generation styles */
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; page-break-after: always; }
+            .page:last-of-type { page-break-after: auto; }
+            .download-section { display: none !important; }
+            .clear-sig-btn { display: none !important; }
+            .signature-canvas-wrapper { display: none !important; }
+            .signature-canvas-placeholder { display: none !important; }
+            .signature-image { display: block !important; }
+        }
+
+        @media screen {
+            .page {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+                margin: 20px auto;
+            }
+        }
+
+        /* PDF generation class - applied via JS */
+        .generating-pdf .download-section { display: none !important; }
+        .generating-pdf .clear-sig-btn { display: none !important; }
+        .generating-pdf .signature-canvas-wrapper { display: none !important; }
+        .generating-pdf .signature-canvas-placeholder { display: none !important; }
+        .generating-pdf .signature-image { display: block !important; }
+    </style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page" id="page-1">
+
+    <div class="top-accent"></div>
+
+    <div class="content-wrapper">
+
+        <!-- Header -->
+        <header class="agreement-header">
+            <div class="header-content">
+                <h1 class="company-name">A Portland Career</h1>
+                <div class="agreement-title">Career Transition Services Agreement&nbsp;&nbsp;|&nbsp;&nbsp;[Client Name]</div>
+            </div>
+            <div class="header-meta">
+                <div class="date-stamp">[Month Year]</div>
+                <div class="logo-container">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career Logo" style="width: 85px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display: none; width: 85px; height: 60px;" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="116" height="56" rx="4" fill="none" stroke="#16163f" stroke-width="2"/>
+                        <text x="60" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="60" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Intro -->
+        <section class="agreement-intro">
+            <p>This Service Agreement ("Agreement") is entered into as of the date signed below, by and between <strong>A Portland Career</strong>, a career coaching and consulting firm based in Portland, Oregon ("Provider"), and <strong>[Client Name]</strong>, located in [Client City, State] ("Client"), collectively referred to as the "Parties."</p>
+        </section>
+
+        <!-- 1. Scope of Services -->
+        <div class="clause">
+            <h3 class="section-header">1. Scope of Services<span class="section-header-line"></span></h3>
+            <p>Provider agrees to deliver personalized career transition coaching services to up to <strong>[Number of Staff] departing staff members</strong> designated by Client. Each participant will receive individualized support designed to accelerate their career transition and next-opportunity readiness.</p>
+        </div>
+
+        <!-- 2. Services Included -->
+        <div class="clause">
+            <h3 class="section-header">2. Services Included<span class="section-header-line"></span></h3>
+            <p>Each participant's engagement includes the following:</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Initial 1-on-1 strategy session with Dan Hahn, M.S. (CEO & Founder)
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Personalized coach matching based on goals
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Resume &amp; cover letter development
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    LinkedIn profile optimization
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Interview preparation &amp; coaching
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Job search strategy &amp; networking guidance
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Career planning &amp; skills assessment
+                </div>
+                <div class="service-item">
+                    <span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Industry landscape navigation
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Engagement Terms -->
+        <div class="clause">
+            <h3 class="section-header">3. Engagement Terms<span class="section-header-line"></span></h3>
+
+            <div class="terms-highlight">
+                <div class="terms-grid">
+                    <div class="term-item">
+                        <span class="term-label">Hours per Participant</span>
+                        <span class="term-value">[Hours per Employee] Hours</span>
+                        <span class="term-note">Individual cap, no pooling across cohort</span>
+                    </div>
+                    <div class="term-item">
+                        <span class="term-label">Rate</span>
+                        <span class="term-value">[Rate per Hour] / hour</span>
+                        <span class="term-note">[Total per Employee] per employee</span>
+                    </div>
+                    <div class="term-item">
+                        <span class="term-label">Maximum Participants</span>
+                        <span class="term-value">[Number of Staff] Employees</span>
+                        <span class="term-note">Departing [Client Name] staff</span>
+                    </div>
+                    <div class="term-item">
+                        <span class="term-label">Maximum Investment</span>
+                        <span class="term-value">[Maximum Investment]</span>
+                        <span class="term-note">Only for employees who actively engage</span>
+                    </div>
+                </div>
+            </div>
+
+            <p>Each participant receives a dedicated <strong>[Hours per Employee] hour</strong> individual allocation. Hours are <strong>not pooled</strong> across the cohort and may not be redistributed between participants. This structure ensures equity and predictability on a per-person basis.</p>
+        </div>
+
+    </div>
+
+    <div class="page-number">Page 1 of 2</div>
+
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page" id="page-2">
+
+    <div class="top-accent"></div>
+
+    <div class="content-wrapper">
+
+        <!-- Page 2 header -->
+        <div class="page-2-header">
+            <div class="logo-container" style="width: 55px;">
+                <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 55px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg style="display: none; width: 55px; height: 38px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                    <text x="40" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                    <text x="40" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                </svg>
+            </div>
+            <div class="page-2-header-text">Service Agreement&nbsp;&nbsp;|&nbsp;&nbsp;A Portland Career &amp; [Client Name]</div>
+        </div>
+
+        <!-- 4. Billing -->
+        <div class="clause">
+            <h3 class="section-header">4. Billing &amp; Invoicing<span class="section-header-line"></span></h3>
+            <p>Client will be invoiced <strong>[Total per Employee] per employee</strong> upon completion of that employee's initial strategy session with Dan Hahn, M.S. Client is only billed for employees who actively engage in the program. If a designated employee does not schedule or complete an intake session, no charge will be incurred for that individual.</p>
+        </div>
+
+        <!-- 5. Eligibility & Timeline -->
+        <div class="clause">
+            <h3 class="section-header">5. Eligibility &amp; Timeline<span class="section-header-line"></span></h3>
+            <ul>
+                <li><strong>Intake Deadline:</strong> Each eligible employee must reach out and complete their initial intake session within <strong>[Intake Deadline Days] days</strong> of their separation date to be eligible for services under this Agreement.</li>
+                <li><strong>Usage Window:</strong> Each participant has up to <strong>[Usage Window Months] months</strong> from the date of their intake session to utilize their [Hours per Employee] hours of coaching.</li>
+            </ul>
+        </div>
+
+        <!-- 6. Unused Hours & Refund Policy -->
+        <div class="clause">
+            <h3 class="section-header">6. Unused Hours &amp; Refund Policy<span class="section-header-line"></span></h3>
+            <p>If a participant does not use all [Hours per Employee] hours within the [Usage Window Months] month window, Provider will issue a <strong>prorated refund</strong> to Client for the unused portion. The refund will be calculated at the per-hour rate of [Rate per Hour]. [Include example calculation here.]</p>
+        </div>
+
+        <!-- 7. Reporting -->
+        <div class="clause">
+            <h3 class="section-header">7. Reporting<span class="section-header-line"></span></h3>
+            <p>Provider will deliver <strong>monthly usage reports</strong> to Client showing each participant's progress, including hours used, hours remaining, and general engagement status. These reports ensure Client has full visibility into how the program is being utilized.</p>
+        </div>
+
+        <!-- 8. Confidentiality -->
+        <div class="clause">
+            <h3 class="section-header">8. Confidentiality<span class="section-header-line"></span></h3>
+            <p>Provider will maintain the confidentiality of all participant coaching sessions. Usage reports shared with Client will include hours and engagement status only; the specific content of coaching conversations will remain confidential between the participant and their assigned coach.</p>
+        </div>
+
+        <!-- 9. Term & Termination -->
+        <div class="clause">
+            <h3 class="section-header">9. Term &amp; Termination<span class="section-header-line"></span></h3>
+            <p>This Agreement becomes effective upon execution by both Parties and remains in effect until all participant engagements have concluded or all usage windows have expired, whichever comes first. Either Party may terminate this Agreement with thirty (30) days' written notice. In the event of early termination, Client will be responsible only for services already rendered, and Provider will issue a prorated refund for any unused, pre-invoiced hours.</p>
+        </div>
+
+        <!-- Signatures -->
+        <section class="signature-section">
+            <p class="signature-intro">By signing below, both Parties agree to the terms and conditions set forth in this Agreement.</p>
+
+            <div class="signatures-container">
+
+                <!-- Client Signature -->
+                <div class="signature-block">
+                    <div class="signature-block-label">[Client Name]</div>
+
+                    <div class="signature-canvas-wrapper">
+                        <canvas id="sig-client" class="signature-canvas"></canvas>
+                        <span class="signature-canvas-placeholder" id="placeholder-client">Sign here</span>
+                    </div>
+                    <img id="sig-img-client" class="signature-image" alt="Client Signature">
+                    <button class="clear-sig-btn" onclick="clearSignature('client')">Clear</button>
+
+                    <div class="sig-field">
+                        <label for="name-client">Printed Name</label>
+                        <input type="text" id="name-client" value="[Client Contact Name]">
+                    </div>
+                    <div class="sig-field">
+                        <label for="title-client">Title</label>
+                        <input type="text" id="title-client" value="[Client Contact Title]">
+                    </div>
+                    <div class="sig-field">
+                        <label for="date-client">Date</label>
+                        <input type="date" id="date-client">
+                    </div>
+                </div>
+
+                <!-- Provider Signature -->
+                <div class="signature-block">
+                    <div class="signature-block-label">A Portland Career</div>
+
+                    <div class="signature-canvas-wrapper">
+                        <canvas id="sig-provider" class="signature-canvas"></canvas>
+                        <span class="signature-canvas-placeholder" id="placeholder-provider">Sign here</span>
+                    </div>
+                    <img id="sig-img-provider" class="signature-image" alt="Provider Signature">
+                    <button class="clear-sig-btn" onclick="clearSignature('provider')">Clear</button>
+
+                    <div class="sig-field">
+                        <label for="name-provider">Printed Name</label>
+                        <input type="text" id="name-provider" value="Dan Hahn">
+                    </div>
+                    <div class="sig-field">
+                        <label for="title-provider">Title</label>
+                        <input type="text" id="title-provider" value="CEO & Founder">
+                    </div>
+                    <div class="sig-field">
+                        <label for="date-provider">Date</label>
+                        <input type="date" id="date-provider">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <div class="page-number">Page 2 of 2</div>
+
+</div>
+
+<!-- Download Button -->
+<div class="download-section" id="download-section">
+    <button class="download-btn" id="download-btn" onclick="generatePDF()">Download Signed Agreement as PDF</button>
+    <p class="download-hint">Both signatures and all fields should be completed before downloading.</p>
+    <p class="download-status" id="download-status"></p>
+</div>
+
+<script>
+    // ========== Signature Pad Logic ==========
+    const pads = {};
+
+    function initSignaturePad(id) {
+        const canvas = document.getElementById('sig-' + id);
+        const ctx = canvas.getContext('2d');
+        const placeholder = document.getElementById('placeholder-' + id);
+        let drawing = false;
+        let hasSignature = false;
+
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = 80;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', () => {
+            if (!hasSignature) resizeCanvas();
+        });
+
+        ctx.strokeStyle = '#16163f';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches ? e.touches[0] : e;
+            return {
+                x: touch.clientX - rect.left,
+                y: touch.clientY - rect.top
+            };
+        }
+
+        function startDraw(e) {
+            e.preventDefault();
+            drawing = true;
+            hasSignature = true;
+            placeholder.style.display = 'none';
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            e.preventDefault();
+            const pos = getPos(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        }
+
+        function endDraw(e) {
+            if (drawing) {
+                e.preventDefault();
+                drawing = false;
+            }
+        }
+
+        canvas.addEventListener('mousedown', startDraw);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', endDraw);
+        canvas.addEventListener('mouseleave', endDraw);
+        canvas.addEventListener('touchstart', startDraw, { passive: false });
+        canvas.addEventListener('touchmove', draw, { passive: false });
+        canvas.addEventListener('touchend', endDraw);
+
+        pads[id] = {
+            canvas: canvas,
+            ctx: ctx,
+            placeholder: placeholder,
+            clear: function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                hasSignature = false;
+                placeholder.style.display = 'block';
+            },
+            hasSignature: function() { return hasSignature; },
+            toDataURL: function() { return canvas.toDataURL('image/png'); }
+        };
+    }
+
+    function clearSignature(id) {
+        pads[id].clear();
+    }
+
+    // Initialize pads
+    initSignaturePad('client');
+    initSignaturePad('provider');
+
+    // Set today's date as default
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date-client').value = today;
+    document.getElementById('date-provider').value = today;
+
+    // ========== PDF Generation ==========
+    async function generatePDF() {
+        const btn = document.getElementById('download-btn');
+        const status = document.getElementById('download-status');
+
+        btn.disabled = true;
+        status.textContent = 'Generating PDF... please wait.';
+
+        try {
+            // Transfer canvas signatures to images
+            const sigClientImg = document.getElementById('sig-img-client');
+            const sigProviderImg = document.getElementById('sig-img-provider');
+
+            if (pads['client'].hasSignature()) {
+                sigClientImg.src = pads['client'].toDataURL();
+            } else {
+                sigClientImg.src = '';
+            }
+
+            if (pads['provider'].hasSignature()) {
+                sigProviderImg.src = pads['provider'].toDataURL();
+            } else {
+                sigProviderImg.src = '';
+            }
+
+            // Add generating class to hide interactive elements
+            document.body.classList.add('generating-pdf');
+
+            // Wait for images to load
+            await new Promise(r => setTimeout(r, 300));
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'in', 'letter');
+
+            const pages = document.querySelectorAll('.page');
+            for (let i = 0; i < pages.length; i++) {
+                const page = pages[i];
+
+                const canvas = await html2canvas(page, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    width: page.offsetWidth,
+                    height: page.offsetHeight,
+                    backgroundColor: '#ffffff'
+                });
+
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                const imgWidth = 8.5;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                if (i > 0) pdf.addPage();
+                pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+            }
+
+            pdf.save('APC_Service_Agreement.pdf');
+            status.textContent = 'PDF downloaded successfully!';
+        } catch (err) {
+            console.error(err);
+            status.textContent = 'Error generating PDF. Please try again or use Print > Save as PDF.';
+        } finally {
+            document.body.classList.remove('generating-pdf');
+            btn.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>

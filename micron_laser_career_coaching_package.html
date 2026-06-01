@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outplacement Support Package | Micron Laser | A Portland Career</title>
+    <style>
+        :root {
+            --university-navy: #16163f;
+            --transition-blue: #2DA3CB;
+            --accent-light: #e8f4f8;
+            --navy-soft: #2a2a5e;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: #e9ecef;
+            font-size: 9.5pt;
+        }
+        
+        /* Page structure */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative top bar */
+        .top-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #16163f 0%, #16163f 60%, #2DA3CB 60%, #2DA3CB 100%);
+        }
+        
+        .content-wrapper {
+            padding: 0.35in 0.55in 0.3in;
+            height: calc(11in - 5px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Section */
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--university-navy);
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .guide-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            letter-spacing: -0.4px;
+            margin-bottom: 5px;
+        }
+        
+        .guide-subtitle {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            color: var(--transition-blue);
+            font-weight: 400;
+            font-style: italic;
+        }
+        
+        .header-logo {
+            width: 80px;
+            height: auto;
+        }
+        
+        .logo-container {
+            width: 80px;
+        }
+        
+        /* Welcome Message */
+        .welcome-message {
+            background: var(--accent-light);
+            padding: 14px 16px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+            border-left: 4px solid var(--transition-blue);
+        }
+        
+        .welcome-message p {
+            font-size: 9.5pt;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+        
+        .welcome-message p:first-of-type {
+            margin-bottom: 8px;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #2DA3CB, transparent);
+        }
+        
+        /* Services Grid */
+        .services-section {
+            margin-bottom: 18px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+        
+        .check-icon {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            margin-top: 1px;
+        }
+        
+        .check-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Package Options */
+        .package-section {
+            margin-bottom: 18px;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        
+        .package-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 14px;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        
+        .package-option:hover {
+            border-color: var(--transition-blue);
+        }
+        
+        .package-option.recommended {
+            border-color: var(--transition-blue);
+            background: var(--accent-light);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--transition-blue);
+            color: white;
+            font-size: 7pt;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .package-hours {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            line-height: 1.1;
+        }
+        
+        .package-hours-label {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .package-price {
+            font-size: 16pt;
+            font-weight: 700;
+            color: var(--transition-blue);
+        }
+        
+        .package-checkbox {
+            margin-top: 10px;
+        }
+        
+        .package-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        /* Team Section */
+        .team-section {
+            margin-bottom: 18px;
+            padding: 14px 16px;
+            background: #fafafa;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        
+        .team-section p {
+            font-size: 9pt;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+        
+        /* Getting Started CTA */
+        .cta-section {
+            margin-bottom: 0;
+        }
+        
+        .cta-content {
+            background: var(--university-navy);
+            color: white;
+            padding: 16px 18px;
+            border-radius: 4px;
+        }
+        
+        .cta-content h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .cta-primary {
+            font-size: 9.5pt;
+            line-height: 1.55;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .cta-primary a {
+            color: var(--transition-blue);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .cta-contact {
+            font-size: 9pt;
+            color: rgba(255,255,255,0.9);
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .cta-contact .highlight {
+            color: var(--transition-blue);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .guide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            margin-top: auto;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer-logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .footer-logo {
+            width: 55px;
+            height: auto;
+        }
+        
+        .footer-info {
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        .footer-tagline {
+            font-size: 9pt;
+            color: var(--transition-blue);
+            font-style: italic;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            a {
+                text-decoration: underline !important;
+            }
+        }
+        
+        @media screen {
+            .page {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    
+    <!-- Top Accent Bar -->
+    <div class="top-accent"></div>
+    
+    <div class="content-wrapper">
+        
+        <!-- Header -->
+        <header class="guide-header">
+            <div class="header-content">
+                <h1 class="guide-title">Outplacement Support Package</h1>
+                <div class="guide-subtitle">Prepared for Micron Laser by A Portland Career</div>
+            </div>
+            <div class="logo-container">
+                <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career Logo" class="header-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg style="display: none; width: 80px; height: 55px;" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="116" height="56" rx="4" fill="none" stroke="#16163f" stroke-width="2"/>
+                    <text x="60" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                    <text x="60" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                </svg>
+            </div>
+        </header>
+        
+        <!-- Welcome Message -->
+        <section class="welcome-message">
+            <p>Thank you for considering A Portland Career for your employee's professional development. We specialize in helping technical professionals navigate career transitions, explore new directions, and accelerate their job search with confidence.</p>
+            <p>This proposal outlines our <strong>personalized career coaching services</strong> designed to support your team member's career goals—whether that's advancing in their current field, exploring new opportunities, or preparing for a successful job search.</p>
+        </section>
+        
+        <!-- What's Included -->
+        <section class="services-section">
+            <h2 class="section-header">What's Included<span class="section-header-line"></span></h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    1-on-1 strategy session with Dan Hahn, M.S. (Owner)
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Career exploration and direction clarification
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Personalized coach matching based on goals
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Resume and cover letter development
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    LinkedIn profile optimization
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Interview preparation and coaching
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Job search strategy and networking guidance
+                </div>
+                <div class="service-item">
+                    <span class="check-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Salary negotiation and offer evaluation support
+                </div>
+            </div>
+        </section>
+        
+        <!-- Package Options -->
+        <section class="package-section">
+            <h2 class="section-header">Select a Package<span class="section-header-line"></span></h2>
+            <div class="package-grid">
+                <div class="package-option">
+                    <div class="package-hours">10</div>
+                    <div class="package-hours-label">Hours of Coaching</div>
+                    <div class="package-price">$1,800</div>
+                    <div class="package-checkbox">
+                        <input type="checkbox" id="pkg-10" name="package" value="10">
+                    </div>
+                </div>
+                <div class="package-option recommended">
+                    <div class="package-badge">Recommended</div>
+                    <div class="package-hours">15</div>
+                    <div class="package-hours-label">Hours of Coaching</div>
+                    <div class="package-price">$2,700</div>
+                    <div class="package-checkbox">
+                        <input type="checkbox" id="pkg-15" name="package" value="15">
+                    </div>
+                </div>
+                <div class="package-option">
+                    <div class="package-hours">20</div>
+                    <div class="package-hours-label">Hours of Coaching</div>
+                    <div class="package-price">$3,600</div>
+                    <div class="package-checkbox">
+                        <input type="checkbox" id="pkg-20" name="package" value="20">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Us -->
+        <section class="team-section">
+            <h2 class="section-header">About A Portland Career<span class="section-header-line"></span></h2>
+            <p>A Portland Career is a team of 10+ credentialed career coaches with backgrounds spanning business, sales, recruiting, consulting, and psychology. We've helped hundreds of professionals navigate career transitions, land competitive roles, and negotiate better offers. Our coaches hold advanced degrees and certifications, and bring decades of combined experience to every engagement. We'll match your employee with the right specialists based on their goals—whether that's resume development, interview preparation, career exploration, or job search strategy. <a href="https://www.aportlandcareer.com/the-team/" target="_blank" style="color: #2DA3CB; font-weight: 600;">Meet our full team →</a></p>
+        </section>
+        
+        <!-- Getting Started CTA -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h3>Ready to Get Started?</h3>
+                <p class="cta-primary">
+                    To proceed, simply select a package above and return this proposal to us. We'll reach out to schedule the initial strategy session and get your employee started on their career coaching journey.
+                </p>
+                <p class="cta-contact">
+                    <strong>Questions?</strong> Contact Dan Hahn directly: <span class="highlight">dan@aportlandcareer.com</span>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="https://www.aportlandcareer.com/schedule/" target="_blank" class="highlight" style="text-decoration: underline;">Schedule a quick chat</a>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="guide-footer">
+            <div class="footer-logo-section">
+                <div class="logo-container" style="width: 55px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display: none; width: 55px; height: 38px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="40" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="40" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                    </svg>
+                </div>
+                <div class="footer-info">www.aportlandcareer.com</div>
+            </div>
+            <div class="footer-tagline">Accelerating careers with confidence</div>
+        </footer>
+        
+    </div>
+    
+</div>
+
+</body>
+</html>

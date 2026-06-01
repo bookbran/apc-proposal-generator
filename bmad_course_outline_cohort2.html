@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMAD Mastery Program — Executive Cohort Brief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #16163f;
+            --navy-light: #1e1e52;
+            --orange: #f15a24;
+            --green: #10b981;
+            --blue: #2DA3CB;
+            --text: #111118;
+            --text-secondary: #555568;
+            --border: #e2e2e8;
+            --bg-subtle: #f7f7f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: #e4e4ea;
+            font-size: 9pt;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        .top-bar {
+            height: 8px;
+            background: var(--navy);
+        }
+
+        .content {
+            padding: 0.38in 0.6in 0.28in;
+        }
+
+        /* ——— TYPOGRAPHY ——— */
+
+        .section-title {
+            font-size: 11.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: var(--orange);
+            margin-top: 5px;
+        }
+
+        .section-title.no-bar::after {
+            display: none;
+        }
+
+        /* ——— PAGE 1: HEADER ——— */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-title {
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .header-subtitle {
+            font-size: 10.5pt;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.3px;
+            margin-bottom: 3px;
+        }
+
+        .header-tagline {
+            font-size: 9pt;
+            font-weight: 500;
+            color: var(--orange);
+            letter-spacing: 0.2px;
+        }
+
+        .header-right {
+            text-align: right;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .header-meta {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        /* ——— OPENING PARAGRAPH ——— */
+
+        .opening {
+            font-size: 10.5pt;
+            font-weight: 400;
+            line-height: 1.65;
+            color: var(--text);
+            margin-bottom: 20px;
+            padding-right: 0.2in;
+        }
+
+        /* ——— GUIDES SECTION ——— */
+
+        .guides-block {
+            background: var(--navy);
+            color: white;
+            padding: 14px 20px 12px;
+            border-radius: 3px;
+            margin-bottom: 22px;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .guide-name {
+            font-size: 10pt;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1px;
+        }
+
+        .guide-role {
+            font-size: 7.5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 7px;
+        }
+
+        .guide-bio {
+            font-size: 8pt;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.82);
+        }
+
+        .guides-quote {
+            font-size: 8.5pt;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            line-height: 1.5;
+        }
+
+        .guides-quote strong {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+
+        /* ——— PROOF SECTION ——— */
+
+        .proof {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .proof-stats {
+            display: flex;
+            gap: 22px;
+            flex-shrink: 0;
+        }
+
+        .proof-stat {
+            text-align: center;
+        }
+
+        .proof-stat-num {
+            font-size: 26pt;
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .proof-stat-label {
+            font-size: 6.5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--navy);
+            margin-top: 3px;
+        }
+
+        .proof-text {
+            font-size: 8.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .proof-text .highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* ——— 6-WEEK JOURNEY (2x3 GRID) ——— */
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 16px;
+        }
+
+        .week-card {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+        }
+
+        .week-card.elevated {
+            border-left: 3px solid var(--orange);
+            background: linear-gradient(135deg, rgba(241, 90, 36, 0.03) 0%, transparent 60%);
+        }
+
+        .week-num {
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .week-card.elevated .week-num {
+            color: var(--orange);
+        }
+
+        .week-name {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+            margin-bottom: 2px;
+        }
+
+        .week-desc {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .week-biz {
+            font-size: 7pt;
+            font-style: italic;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* ——— PAGE 2 ——— */
+
+        .p2-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .p2-header-text {
+            font-size: 7.5pt;
+            font-weight: 500;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .p2-opening {
+            font-size: 9.5pt;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .p2-content {
+            padding: 0.28in 0.6in 0.25in;
+            min-height: calc(11in - 8px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .p2-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ——— WHAT YOU WALK AWAY WITH (3-COL) ——— */
+
+        .build-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .build-col h4 {
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .build-item {
+            font-size: 8.5pt;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            padding-left: 14px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .build-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .build-col.projects .build-item::before,
+        .build-col.knowledge .build-item::before {
+            background: var(--navy);
+        }
+
+        .build-col.outcomes .build-item::before {
+            background: var(--green);
+        }
+
+        /* ——— LOGISTICS ——— */
+
+        .logistics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            margin-bottom: 14px;
+        }
+
+        .logistics-cell {
+            text-align: center;
+            padding: 12px 8px 10px;
+            border-right: 1px solid var(--border);
+        }
+
+        .logistics-cell:last-child {
+            border-right: none;
+        }
+
+        .logistics-cell svg {
+            width: 18px;
+            height: 18px;
+            margin-bottom: 5px;
+        }
+
+        .logistics-label {
+            font-size: 6.5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #aaa;
+            margin-bottom: 2px;
+        }
+
+        .logistics-value {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
+        .logistics-sub {
+            font-size: 7pt;
+            color: #999;
+            margin-top: 1px;
+        }
+
+        /* ——— EXTENDED TOPICS ——— */
+
+        .topics-row {
+            margin-bottom: 12px;
+        }
+
+        .topics-label {
+            font-size: 7pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #aaa;
+            margin-bottom: 6px;
+        }
+
+        .topics-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 6px;
+        }
+
+        .topic-tag {
+            font-size: 7pt;
+            padding: 2px 8px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            background: transparent;
+        }
+
+        /* ——— NEXT STEPS ——— */
+
+        .cta-block {
+            border: 2px solid var(--navy);
+            border-radius: 3px;
+            padding: 14px 18px 12px;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+
+        .cta-title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .cta-grid {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .cta-step {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .cta-num {
+            font-size: 16pt;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            flex-shrink: 0;
+            opacity: 0.25;
+        }
+
+        .cta-step-body h4 {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1px;
+        }
+
+        .cta-step-body p {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .cta-closing {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ——— FOOTER ——— */
+
+        .footer {
+            background: var(--navy);
+            padding: 12px 20px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+        }
+
+        .footer-left {
+            color: white;
+        }
+
+        .footer-names {
+            font-size: 9pt;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .footer-details {
+            font-size: 7.5pt;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-tag {
+            font-size: 7pt;
+            color: rgba(255,255,255,0.4);
+            margin-top: 3px;
+        }
+
+        /* ——— UTILITIES ——— */
+
+        p { orphans: 3; widows: 3; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; }
+        }
+
+        @media screen {
+            .page { box-shadow: 0 2px 32px rgba(0,0,0,0.12); margin: 24px auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+
+    <div class="top-bar"></div>
+
+    <div class="content">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="header-title">BMAD Mastery Program</h1>
+                <div class="header-subtitle">AI Builder's Intensive &mdash; Executive Cohort</div>
+                <div class="header-tagline">Build What You Can't Buy &mdash; Understand What You Fund</div>
+            </div>
+            <div class="header-right">
+                <div class="header-meta">Prepared for Will<br>February 2026</div>
+                <div class="logo-container" style="width: 70px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 70px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display:none; width:70px; height:48px;" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                        <text x="60" y="26" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="60" y="42" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#16163f">CAREER</text>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- OPENING PARAGRAPH -->
+        <p class="opening">You're fielding pitches from founders spending $1,000/day on AI tokens. You've tried the tools yourself and hit walls. This program gives you the hands-on fluency to evaluate what's real, build what you need, and lead technical conversations with confidence&nbsp;&mdash;&nbsp;in six weeks.</p>
+
+        <!-- YOUR GUIDES -->
+        <div class="section-title">Your Guides</div>
+        <div class="guides-block">
+            <div class="guides-grid">
+                <div>
+                    <div class="guide-name">Danny Bauman</div>
+                    <div class="guide-role">Technical Lead</div>
+                    <div class="guide-bio">Former Google PM. Developer, project manager, and startup CEO across companies large and small. Currently leading PeopleOps, recruiting, and AI adoption strategy&nbsp;&mdash; using these tools daily to streamline real operations, then pressure-testing every new release at night: Claude Code, OpenClaw, agent teams. Translates technical to business fluently, having sat in both seats. Danny builds alongside you in real-time.</div>
+                </div>
+                <div>
+                    <div class="guide-name">Dan Hahn, M.S.</div>
+                    <div class="guide-role">Program Architect</div>
+                    <div class="guide-bio">Co-developed the teaching model behind the pilot cohort's 100% completion and deployment rate. Career development expert who runs A Portland Career, working daily with professionals navigating industry shifts. Builder himself&nbsp;&mdash; career assessment platforms, operations automation, AI-powered workflows. Dan brings the organizational lens &mdash; how AI reshapes roles, teams, and the way decisions get made across industries.</div>
+                </div>
+            </div>
+            <div class="guides-quote"><strong>"We're in it with you &mdash; navigating new tools, new capabilities, and real decisions in real-time."</strong></div>
+        </div>
+
+        <!-- PROOF -->
+        <div class="proof">
+            <div class="proof-stats">
+                <div class="proof-stat">
+                    <div class="proof-stat-num">5</div>
+                    <div class="proof-stat-label">Students</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-stat-num">100%</div>
+                    <div class="proof-stat-label">Completion</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-stat-num">5/5</div>
+                    <div class="proof-stat-label">Deployed</div>
+                </div>
+            </div>
+            <div class="proof-text">Five non-technical students. Zero coding experience. All shipped deployed applications in six weeks. <span class="highlight">Imagine what you'll build with your existing knowledge.</span></div>
+        </div>
+
+        <!-- 6-WEEK JOURNEY -->
+        <div class="section-title">The Six-Week Arc</div>
+        <div class="journey-grid">
+            <div class="week-card">
+                <div class="week-num">Week 1</div>
+                <div class="week-name">Foundation &mdash; The "Wow" + First Tool (Cursor)</div>
+                <div class="week-desc">3-minute build demo, your first app, Cursor basics &amp; Git</div>
+                <div class="week-biz">Understanding the universal CRUD pattern behind every startup</div>
+            </div>
+            <div class="week-card">
+                <div class="week-num">Week 2</div>
+                <div class="week-name">Full Stack &mdash; Database, Auth &amp; the BMAD Team</div>
+                <div class="week-desc">Supabase integration, MCP connections, agent team workflow</div>
+                <div class="week-biz">How AI-native companies structure engineering differently</div>
+            </div>
+            <div class="week-card elevated">
+                <div class="week-num">Week 3</div>
+                <div class="week-name">Agent Teams &mdash; Claude Code &amp; the Orchestrator Model</div>
+                <div class="week-desc">Rebuild in Claude Code, Skills &amp; agent teams, token economics</div>
+                <div class="week-biz">Why developers spend $1k/day on tokens &mdash; and when it makes sense</div>
+            </div>
+            <div class="week-card">
+                <div class="week-num">Week 4</div>
+                <div class="week-name">Your Project &mdash; Define &amp; Build Your "Quick Win"</div>
+                <div class="week-desc">Personal project scoping, architecture, first feature build</div>
+                <div class="week-biz">Technical debt decisions your portfolio companies face daily</div>
+            </div>
+            <div class="week-card elevated">
+                <div class="week-num">Week 5</div>
+                <div class="week-name">Autonomous Work &mdash; OpenClaw &amp; Quality Control</div>
+                <div class="week-desc">Work that happens while you're away, polish strategies</div>
+                <div class="week-biz">Cloud agents and the next wave of AI infrastructure</div>
+            </div>
+            <div class="week-card">
+                <div class="week-num">Week 6</div>
+                <div class="week-name">Ship It &mdash; Deployment &amp; Demo Day</div>
+                <div class="week-desc">Go live on Vercel, production setup, live demos &amp; storytelling</div>
+                <div class="week-biz">Communicating technical work to non-technical stakeholders</div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="page">
+
+    <div class="top-bar"></div>
+
+    <div class="p2-content">
+
+        <div class="p2-main">
+
+            <!-- P2 HEADER -->
+            <div class="p2-header">
+                <div class="logo-container" style="width: 48px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 48px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display:none; width:48px; height:33px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="40" y="17" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="40" y="29" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="bold" fill="#16163f">CAREER</text>
+                    </svg>
+                </div>
+                <div class="p2-header-text">BMAD Mastery Program &nbsp;&bull;&nbsp; Executive Cohort</div>
+            </div>
+
+            <!-- BRIDGE LINE -->
+            <p class="p2-opening">Six weeks from starting, you'll have built real tools, gained hands-on fluency, and shifted how you engage with AI across your work.</p>
+
+            <!-- WHAT YOU WALK AWAY WITH -->
+            <div class="section-title">What You Walk Away With</div>
+            <div class="build-grid">
+                <div class="build-col projects">
+                    <h4>What You Can Build</h4>
+                    <div class="build-item">A portfolio company evaluation tool pulling real data</div>
+                    <div class="build-item">A deal flow pipeline with custom scoring logic</div>
+                    <div class="build-item">Internal firm automation you've wanted but couldn't spec</div>
+                    <div class="build-item">A personal tool scoped to your own work and workflow</div>
+                </div>
+                <div class="build-col knowledge">
+                    <h4>What You Know</h4>
+                    <div class="build-item">When to use Cursor vs Claude Code vs autonomous agents</div>
+                    <div class="build-item">How token economics and cost structures actually work</div>
+                    <div class="build-item">What real AI capability looks like beneath the pitch deck</div>
+                    <div class="build-item">How AI-native teams structure, build, and ship</div>
+                </div>
+                <div class="build-col outcomes">
+                    <h4>How Your Work Changes</h4>
+                    <div class="build-item">You hold technical conversations founders take seriously</div>
+                    <div class="build-item">You evaluate AI investments from direct experience</div>
+                    <div class="build-item">You orchestrate AI tools in your daily workflow with confidence</div>
+                    <div class="build-item">You build what you need &mdash; and know when to buy instead</div>
+                </div>
+            </div>
+
+            <!-- LOGISTICS -->
+            <div class="section-title">Format</div>
+            <div class="logistics-grid">
+                <div class="logistics-cell">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#16163f" stroke-width="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#16163f" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <div class="logistics-label">Duration</div>
+                    <div class="logistics-value">6 Weeks</div>
+                    <div class="logistics-sub">Mar 2 &ndash; Apr 10</div>
+                </div>
+                <div class="logistics-cell">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#16163f" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#16163f" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <div class="logistics-label">Sessions</div>
+                    <div class="logistics-value">Tue / Thu</div>
+                    <div class="logistics-sub">3:00 &ndash; 5:00 PM</div>
+                </div>
+                <div class="logistics-cell">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#16163f" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#16163f" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#16163f" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <div class="logistics-label">Cohort</div>
+                    <div class="logistics-value">4&ndash;8 People</div>
+                    <div class="logistics-sub">Small &amp; focused</div>
+                </div>
+                <div class="logistics-cell">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#16163f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <div class="logistics-label">Office Hours</div>
+                    <div class="logistics-value">Wednesdays</div>
+                    <div class="logistics-sub">3:30 &ndash; 4:30 PM</div>
+                </div>
+            </div>
+
+            <!-- EXTENDED TOPICS -->
+            <div class="section-title no-bar">Extended Topics</div>
+            <div class="topics-row">
+                <div class="topics-label">Available as deep dives or post-cohort workshops</div>
+                <div class="topics-list">
+                    <span class="topic-tag">Token Economics</span>
+                    <span class="topic-tag">AI Company Landscape</span>
+                    <span class="topic-tag">Agent Frameworks &amp; SDKs</span>
+                    <span class="topic-tag">What Engineers Really Think</span>
+                    <span class="topic-tag">Future of CEO / CTO Roles</span>
+                    <span class="topic-tag">Privacy &amp; Security</span>
+                    <span class="topic-tag">Production Ops</span>
+                    <span class="topic-tag">AI-Native Products</span>
+                </div>
+            </div>
+
+            <!-- NEXT STEPS -->
+            <div class="cta-block">
+                <div class="cta-title">Next Steps</div>
+                <div class="cta-grid">
+                    <div class="cta-step">
+                        <div class="cta-num">1</div>
+                        <div class="cta-step-body">
+                            <h4>Review this brief</h4>
+                            <p>Does this match what you're looking for?</p>
+                        </div>
+                    </div>
+                    <div class="cta-step">
+                        <div class="cta-num">2</div>
+                        <div class="cta-step-body">
+                            <h4>30-minute call</h4>
+                            <p>Walk through the details, discuss timing and fit.</p>
+                        </div>
+                    </div>
+                    <div class="cta-step">
+                        <div class="cta-num">3</div>
+                        <div class="cta-step-body">
+                            <h4>Start building</h4>
+                            <p>Confirm dates, finalize details, begin Week 1.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-closing">We're building this cohort around a small group of senior leaders who want hands-on AI fluency. Format, timing, and structure are flexible &mdash; let's find what works.</div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-left">
+                <div class="footer-names">Danny Bauman &nbsp;&bull;&nbsp; Dan Hahn, M.S.</div>
+                <div class="footer-details">dan@aportlandcareer.com &nbsp;&bull;&nbsp; 503-470-9544 &nbsp;&bull;&nbsp; A Portland Career</div>
+            </div>
+            <div class="footer-right">
+                <div class="logo-container" style="width: 55px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 55px; height: auto; filter: brightness(0) invert(1); opacity: 0.85;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display:none; width:55px; height:28px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="40" y="17" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="bold" fill="white">A PORTLAND</text>
+                        <text x="40" y="29" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="bold" fill="rgba(255,255,255,0.6)">CAREER</text>
+                    </svg>
+                </div>
+                <div class="footer-tag">www.aportlandcareer.com</div>
+            </div>
+        </footer>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

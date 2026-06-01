@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Career Exploration Journey | A Portland Career</title>
+    <style>
+        :root {
+            --navy: #16163f;
+            --navy-soft: #2a2a5e;
+            --blue: #2DA3CB;
+            --accent-light: #e8f4f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --phase1: #16163f;
+            --phase2: #1a5f7a;
+            --phase3: #2DA3CB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        @page {
+            size: 11in 8.5in landscape;
+            margin: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #e9ecef;
+            width: 11in;
+            height: 8.5in;
+        }
+
+        .page {
+            width: 11in;
+            height: 8.5in;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top accent bar */
+        .top-accent {
+            height: 5px;
+            flex-shrink: 0;
+            background: linear-gradient(90deg, #16163f 0%, #16163f 60%, #2DA3CB 60%, #2DA3CB 100%);
+        }
+
+        .content-wrapper {
+            padding: 0.28in 0.45in 0.22in;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .header-left {}
+
+        .doc-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 18pt;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.3px;
+            margin-bottom: 3px;
+        }
+
+        .doc-subtitle {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 9.5pt;
+            color: var(--blue);
+            font-style: italic;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .track-badge {
+            background: var(--navy);
+            color: white;
+            font-size: 7.5pt;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* Intro text */
+        .intro-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 14px;
+            max-width: 75%;
+        }
+
+        /* Phase + session layout */
+        .journey {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phases-row {
+            display: flex;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        /* Phase block */
+        .phase {
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1.5px solid #e0e0e0;
+        }
+
+        .phase-1 { flex: 3; }
+        .phase-2 { flex: 3; }
+        .phase-3 { flex: 1.1; }
+
+        .phase-header {
+            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phase-1 .phase-header { background: var(--phase1); }
+        .phase-2 .phase-header { background: var(--phase2); }
+        .phase-3 .phase-header { background: var(--phase3); }
+
+        .phase-number {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 9pt;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .phase-label {
+            color: white;
+        }
+
+        .phase-name {
+            font-family: Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .phase-desc {
+            font-size: 7pt;
+            opacity: 0.85;
+            display: block;
+            margin-top: 1px;
+        }
+
+        .sessions-row {
+            display: flex;
+            gap: 0;
+            flex: 1;
+            padding: 8px;
+            background: white;
+            gap: 6px;
+        }
+
+        /* Session card */
+        .session {
+            flex: 1;
+            background: #f8f9fb;
+            border-radius: 5px;
+            padding: 8px 9px;
+            border: 1px solid #e8eaee;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .session-num {
+            font-size: 7pt;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .session-title {
+            font-family: Georgia, serif;
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+        }
+
+        .session-activities {
+            list-style: none;
+            margin-top: 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .session-activities li {
+            font-size: 7pt;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            padding-left: 9px;
+            position: relative;
+        }
+
+        .session-activities li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        .session-homework {
+            margin-top: auto;
+            padding-top: 5px;
+            border-top: 1px dashed #dde;
+        }
+
+        .homework-label {
+            font-size: 6.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 1px;
+        }
+
+        .homework-text {
+            font-size: 6.5pt;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            font-style: italic;
+        }
+
+        /* Guided Mapping badge on phase 2 */
+        .guided-mapping-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 10px;
+            padding: 2px 8px;
+            margin-top: 3px;
+        }
+
+        .guided-mapping-tag span {
+            font-size: 6.5pt;
+            color: white;
+            letter-spacing: 0.3px;
+        }
+
+        /* Arrow connector between phases */
+        .phase-connector {
+            display: flex;
+            align-items: center;
+            color: var(--blue);
+            font-size: 16pt;
+            flex-shrink: 0;
+            margin-top: -10px;
+        }
+
+        /* Footer */
+        .doc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #e0e4e8;
+            margin-top: 10px;
+        }
+
+        .footer-note {
+            font-size: 7pt;
+            color: #999;
+            font-style: italic;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-url {
+            font-size: 7.5pt;
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="top-accent"></div>
+    <div class="content-wrapper">
+
+        <!-- Header -->
+        <div class="doc-header">
+            <div class="header-left">
+                <div class="doc-title">Your Career Exploration Journey</div>
+                <div class="doc-subtitle">A guided process to discover what's next — and build a plan that's truly yours</div>
+            </div>
+            <div class="header-right">
+                <div class="track-badge">Career Explorer Track &nbsp;·&nbsp; 7 Sessions</div>
+                <div>
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png"
+                         alt="A Portland Career"
+                         style="width:70px; height:auto;"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Intro -->
+        <div class="intro-text">
+            This map shows the full arc of our work together. Each phase builds on the last — from getting to know yourself deeply, to exploring the world of possibilities with your coach, to landing on a clear and energizing plan for what comes next. You don't need all the answers going in. That's what this process is for.
+        </div>
+
+        <!-- Journey -->
+        <div class="journey">
+            <div class="phases-row">
+
+                <!-- Phase 1: Self-Discovery -->
+                <div class="phase phase-1">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div class="phase-label">
+                            <span class="phase-name">Self-Discovery</span>
+                            <span class="phase-desc">Sessions 1–3 &nbsp;·&nbsp; Who you are, what energizes you</span>
+                        </div>
+                    </div>
+                    <div class="sessions-row">
+                        <div class="session">
+                            <div class="session-num">Session 1</div>
+                            <div class="session-title">Story &amp; Interests</div>
+                            <ul class="session-activities">
+                                <li>Share your life story and career history</li>
+                                <li>Explore interests across the decades</li>
+                                <li>Identify themes that energize you</li>
+                                <li>Begin building rapport &amp; psychological safety</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Complete IPIP 300 &amp; 16 Personalities assessments</div>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-num">Session 2</div>
+                            <div class="session-title">Personality &amp; Self-Discovery</div>
+                            <ul class="session-activities">
+                                <li>Debrief personality assessment results together</li>
+                                <li>Explore how traits show up in past work</li>
+                                <li>Identify environments where you thrive</li>
+                                <li>Begin connecting insights to career directions</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Complete Motivated Skills Matrix &amp; Gallup Strengths</div>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-num">Session 3</div>
+                            <div class="session-title">Strengths &amp; Career Preferences Model</div>
+                            <ul class="session-activities">
+                                <li>Review strengths assessment together</li>
+                                <li>Build your Career Preferences Model (6–8 criteria)</li>
+                                <li>Connect strengths to what matters most</li>
+                                <li>Discuss with someone who knows you well</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Refine your preferences model; discuss top criteria with a trusted person</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Guided Mapping -->
+                <div class="phase phase-2">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div class="phase-label">
+                            <span class="phase-name">Guided Mapping</span>
+                            <span class="phase-desc">Sessions 4–6 &nbsp;·&nbsp; Exploring the world of possibilities together</span>
+                            <span class="guided-mapping-tag"><span>✦ Coach &amp; client work side-by-side in real time</span></span>
+                        </div>
+                    </div>
+                    <div class="sessions-row">
+                        <div class="session">
+                            <div class="session-num">Session 4</div>
+                            <div class="session-title">Industry Discovery</div>
+                            <ul class="session-activities">
+                                <li>Finalize your Career Preferences Model together</li>
+                                <li>Co-explore industries using AI, O*NET &amp; CareerExplorer</li>
+                                <li>React in real time — your coach watches for energy</li>
+                                <li>Surface 3–4 industries worth investigating further</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Read one article on each of two industries that felt most alive</div>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-num">Session 5</div>
+                            <div class="session-title">Organization &amp; Role Exploration</div>
+                            <ul class="session-activities">
+                                <li>Co-browse target companies and LinkedIn profiles</li>
+                                <li>Explore role types and job postings together</li>
+                                <li>Build your organization and role list in real time</li>
+                                <li>Notice what pulls your attention and curiosity</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Reach out to one person you know adjacent to a field of interest — a curiosity conversation, not a job ask</div>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-num">Session 6</div>
+                            <div class="session-title">Networking for Exploration</div>
+                            <ul class="session-activities">
+                                <li>Debrief your first curiosity conversation</li>
+                                <li>Prepare outreach messages for 2–3 informational interviews</li>
+                                <li>Select questions to ask; role-play the conversation</li>
+                                <li>Learn what you need to confirm interest &amp; direction</li>
+                            </ul>
+                            <div class="session-homework">
+                                <div class="homework-label">Between Sessions</div>
+                                <div class="homework-text">Send outreach messages drafted in session; conduct informational conversations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Pathway Planning -->
+                <div class="phase phase-3">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div class="phase-label">
+                            <span class="phase-name">Pathway Planning</span>
+                            <span class="phase-desc">Session 7 &nbsp;·&nbsp; Your plan forward</span>
+                        </div>
+                    </div>
+                    <div class="sessions-row">
+                        <div class="session">
+                            <div class="session-num">Session 7</div>
+                            <div class="session-title">Synthesis &amp; Transition Roadmap</div>
+                            <ul class="session-activities">
+                                <li>Review all you've learned and explored</li>
+                                <li>Use your preferences model as a decision filter</li>
+                                <li>Co-create your transition roadmap — job search, skill-building, education, volunteering, or more exploration</li>
+                                <li>Leave with clarity, direction, and a clear next step</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            <div class="footer-note">This journey is yours. Your coach walks with you every step of the way — you are never doing this alone.</div>
+            <div class="footer-right">
+                <div class="footer-url">www.aportlandcareer.com</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

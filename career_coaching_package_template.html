@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Outplacement Proposal | [Client Name]</title>
+    <style>
+        :root {
+            --university-navy: #16163f;
+            --transition-blue: #2DA3CB;
+            --accent-light: #e8f4f8;
+            --navy-soft: #2a2a5e;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: #e9ecef;
+            font-size: 9.5pt;
+        }
+        
+        /* Page structure */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+        
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Decorative top bar */
+        .top-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #16163f 0%, #16163f 60%, #2DA3CB 60%, #2DA3CB 100%);
+        }
+        
+        .content-wrapper {
+            padding: 0.4in 0.6in 0.35in;
+        }
+        
+        /* Page numbers */
+        .page-number {
+            position: absolute;
+            bottom: 0.25in;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 8pt;
+            color: #999;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Header Section */
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--university-navy);
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .company-name {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            letter-spacing: -0.4px;
+            margin-bottom: 4px;
+        }
+        
+        .proposal-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            color: var(--transition-blue);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+        
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .date-stamp {
+            font-size: 8pt;
+            color: #888;
+            text-align: right;
+        }
+        
+        /* SVG Logo */
+        .logo-svg {
+            width: 75px;
+            height: 52px;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: #e8f4f8;
+            padding: 18px 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--transition-blue);
+        }
+        
+        .executive-summary p {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .executive-summary p:first-of-type {
+            margin-bottom: 10px;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #2DA3CB, transparent);
+        }
+        
+        /* Credentialed Excellence Section */
+        .credentials-section {
+            margin-bottom: 24px;
+        }
+        
+        .credentials-content {
+            background: #16163f;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .credentials-highlight {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .credentials-experts {
+            font-size: 9pt;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            padding-left: 12px;
+            border-left: 2px solid var(--transition-blue);
+            line-height: 1.55;
+        }
+        
+        /* Why Section */
+        .why-section {
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: #fafafa;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        
+        .why-section h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 10px;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+        }
+        
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .why-icon {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--transition-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+        
+        .why-icon svg {
+            width: 10px;
+            height: 10px;
+        }
+        
+        /* 3-Step Process Timeline */
+        .process-section {
+            margin-bottom: 0;
+        }
+        
+        .timeline-container {
+            display: flex;
+            gap: 0;
+            position: relative;
+            padding-top: 4px;
+        }
+        
+        /* Timeline connector - real HTML element */
+        .timeline-connector {
+            position: absolute;
+            top: 28px;
+            left: 55px;
+            right: 55px;
+            height: 3px;
+            z-index: 0;
+        }
+        
+        .timeline-connector svg {
+            width: 100%;
+            height: 3px;
+        }
+        
+        .timeline-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 8px 16px;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #16163f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            border: 3px solid #2DA3CB;
+        }
+        
+        .step-number span {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 16pt;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .step-subtitle {
+            font-size: 8pt;
+            font-weight: 600;
+            color: var(--transition-blue);
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        
+        .step-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 6px;
+        }
+        
+        .step-description {
+            font-size: 8.5pt;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        /* Page 2 Header */
+        .page-2-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-2-header-text {
+            font-size: 9pt;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .page-2-logo {
+            width: 50px;
+            height: auto;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            margin-bottom: 24px;
+        }
+        
+        .pricing-table {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .pricing-package {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+        
+        .pricing-package.recommended {
+            border: 2px solid var(--transition-blue);
+            background: linear-gradient(180deg, #f8fcfd 0%, #fff 100%);
+            box-shadow: 0 2px 8px rgba(45, 163, 203, 0.15);
+        }
+        
+        .recommended-badge {
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--transition-blue);
+            color: white;
+            font-size: 7.5pt;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .package-hours {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 6px;
+        }
+        
+        .package-label {
+            font-size: 8.5pt;
+            color: #666;
+            margin-bottom: 14px;
+        }
+        
+        .package-price-individual {
+            font-size: 18pt;
+            font-weight: 700;
+            color: var(--transition-blue);
+            margin-bottom: 3px;
+        }
+        
+        .package-price-per {
+            font-size: 8pt;
+            color: #888;
+            margin-bottom: 12px;
+        }
+        
+        .package-price-total {
+            background: var(--accent-light);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .package-total-label {
+            font-size: 7.5pt;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+        
+        .package-total-amount {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--university-navy);
+        }
+        
+        .pricing-note {
+            font-size: 8.5pt;
+            color: #666;
+            text-align: center;
+            font-style: italic;
+            padding: 10px 16px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        /* Services List */
+        .services-section {
+            margin-bottom: 24px;
+            padding: 18px 20px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        
+        .services-section .section-header {
+            margin-bottom: 14px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .check-icon {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            margin-top: 1px;
+        }
+        
+        .check-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Next Steps Section */
+        .next-steps-section {
+            margin-bottom: 24px;
+        }
+        
+        .next-steps-content {
+            background: var(--university-navy);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 4px;
+        }
+        
+        .next-steps-grid {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .next-step-item {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .next-step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--transition-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .next-step-number span {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .next-step-content h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+        
+        .next-step-content p {
+            font-size: 8.5pt;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        /* Flexible Service Guarantee */
+        .guarantee-section {
+            margin-bottom: 20px;
+        }
+        
+        .guarantee-content {
+            background: linear-gradient(135deg, #f8fbfc 0%, #eef6f9 100%);
+            border: 1px solid rgba(45, 163, 203, 0.25);
+            border-radius: 4px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        
+        .guarantee-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--accent-light);
+            border: 2px solid var(--transition-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .guarantee-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .guarantee-text h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 6px;
+        }
+        
+        .guarantee-text p {
+            font-size: 8.5pt;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+        
+        /* Footer / Contact Section */
+        .proposal-footer {
+            background: #16163f;
+            padding: 18px 24px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .liaison-info {
+            color: white;
+        }
+        
+        .liaison-label {
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--transition-blue);
+            margin-bottom: 3px;
+        }
+        
+        .liaison-name {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .liaison-title {
+            font-size: 8.5pt;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 6px;
+        }
+        
+        .liaison-contact {
+            font-size: 9pt;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .liaison-contact a {
+            color: var(--transition-blue);
+            text-decoration: none;
+        }
+        
+        .footer-logo {
+            text-align: right;
+        }
+        
+        .footer-tagline {
+            font-size: 7.5pt;
+            color: rgba(255,255,255,0.6);
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* Page 2 content wrapper with flex for footer positioning */
+        .page-2-content {
+            padding: 0.35in 0.6in 0.4in;
+            min-height: calc(11in - 5px - 0.5in);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-2-main {
+            flex: 1;
+        }
+        
+        /* Prevent widows and orphans */
+        p, .step-description, .credentials-highlight, .credentials-experts {
+            orphans: 3;
+            widows: 3;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+            
+            .page:last-child {
+                page-break-after: auto;
+            }
+        }
+        
+        @media screen {
+            .page {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page" id="page-1">
+    
+    <!-- Top Accent Bar -->
+    <div class="top-accent"></div>
+    
+    <div class="content-wrapper">
+        
+        <!-- Header -->
+        <header class="proposal-header">
+            <div class="header-content">
+                <h1 class="company-name">A Portland Career</h1>
+                <div class="proposal-title">Strategic Outplacement & Transition Support&nbsp;&nbsp;|&nbsp;&nbsp;Prepared for [Client Name]</div>
+            </div>
+            <div class="header-meta">
+                <div class="date-stamp">Prepared: [Month Year]</div>
+                <div class="logo-container" style="width: 85px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career Logo" style="width: 85px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display: none; width: 85px; height: 60px;" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="116" height="56" rx="4" fill="none" stroke="#16163f" stroke-width="2"/>
+                        <text x="60" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="60" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                    </svg>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <p>At A Portland Career, we recognize that staff transitions within a university environment require a unique blend of empathy, academic fluency, and market-ready strategy. This proposal outlines our plan to support the <strong>[X] departing staff members</strong> from [Client Name] with personalized, expert-led career transition services.</p>
+            <p>Every departing employee will begin their journey with a personal consultation with Dan Hahn, M.S. (CEO & Founder), before being paired with a specialist whose background aligns with their career goals. This ensures your team moves forward with the same level of excellence they experienced while serving your institution.</p>
+        </section>
+        
+        <!-- Credentialed Excellence -->
+        <section class="credentials-section">
+            <h2 class="section-header">Credentialed Excellence: The Team Bench<span class="section-header-line"></span></h2>
+            <div class="credentials-content">
+                <p class="credentials-highlight">Our 8-person team of specialists includes counselors with M.A., M.S., and Ph.D. credentials with direct institutional experience at PSU, PCC, and Lewis & Clark. Our background spans Teaching, Student Affairs, and Industrial Psychology—uniquely qualifying us to guide career transitions. We understand the nuances of higher education culture and can help staff articulate their transferable skills to new employers.</p>
+                <p class="credentials-experts">Featuring specialists like <strong>Ursina Teuscher, Ph.D.</strong> (former Decision Science faculty at PSU and Lewis & Clark) and <strong>Emily Hordes, M.A.</strong> (higher education specialist and expert career transition coach). Each coach brings deep expertise and a genuine commitment to your employees' success.</p>
+            </div>
+        </section>
+        
+        <!-- Why A Portland Career -->
+        <section class="why-section">
+            <h3>Why A Portland Career?</h3>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 5L6.5 11.5L3.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span><strong>Local Expertise:</strong> Deep roots in Portland's academic and professional communities</span>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 5L6.5 11.5L3.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span><strong>Personalized Matching:</strong> 1-on-1 intake ensures the right coach for each employee</span>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 5L6.5 11.5L3.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span><strong>Academic Fluency:</strong> We speak the language of higher education</span>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 5L6.5 11.5L3.5 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span><strong>Results-Driven:</strong> Focused coaching that gets employees hired faster</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3-Step Process Timeline -->
+        <section class="process-section">
+            <h2 class="section-header">Your 3-Step Transition Process<span class="section-header-line"></span></h2>
+            <div class="timeline-container">
+                
+                <!-- Timeline Connector - Real HTML/SVG element -->
+                <div class="timeline-connector">
+                    <svg viewBox="0 0 100 3" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#2DA3CB"/>
+                                <stop offset="50%" stop-color="#16163f"/>
+                                <stop offset="100%" stop-color="#2DA3CB"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="0" y="0" width="100" height="3" fill="url(#timeline-gradient)"/>
+                    </svg>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-number"><span>1</span></div>
+                    <div class="step-subtitle">Direct Intake</div>
+                    <div class="step-title">Strategy Session with Dan Hahn</div>
+                    <p class="step-description">Each employee begins with a 1-on-1 strategy session with <strong>Dan Hahn, M.S.</strong> (CEO & Founder) to identify their specific career needs, goals, and ideal coach match.</p>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-number"><span>2</span></div>
+                    <div class="step-subtitle">Strategic Matching</div>
+                    <div class="step-title">Expert Pairing</div>
+                    <p class="step-description">Following the intake, employees are matched with the most qualified specialist from our team of 8 based on their target industry and professional background.</p>
+                </div>
+                
+                <div class="timeline-step">
+                    <div class="step-number"><span>3</span></div>
+                    <div class="step-subtitle">Dedicated Coaching</div>
+                    <div class="step-title">Strategic Support</div>
+                    <p class="step-description">Focused, results-driven coaching on resume development, LinkedIn optimization, interview preparation, and navigating the industry landscape.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+    </div>
+    
+    <!-- Page Number -->
+    <div class="page-number">Page 1 of 2</div>
+    
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page" id="page-2">
+    
+    <!-- Top Accent Bar -->
+    <div class="top-accent"></div>
+    
+    <div class="page-2-content">
+        
+        <div class="page-2-main">
+            
+            <!-- Page 2 Header -->
+            <div class="page-2-header">
+                <div class="logo-container" style="width: 55px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 55px; height: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display: none; width: 55px; height: 38px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="40" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                        <text x="40" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                    </svg>
+                </div>
+                <div class="page-2-header-text">A Portland Career&nbsp;&nbsp;|&nbsp;&nbsp;[Client Name] Proposal</div>
+            </div>
+            
+            <!-- Pricing Section -->
+            <section class="pricing-section">
+                <h2 class="section-header">Investment Options<span class="section-header-line"></span></h2>
+                
+                <div class="pricing-table">
+                    
+                    <!-- Foundation Package -->
+                    <div class="pricing-package">
+                        <div class="package-hours">Foundation</div>
+                        <div class="package-label">10 Hours of Career Coaching</div>
+                        <div class="package-price-individual">$1,800</div>
+                        <div class="package-price-per">per employee</div>
+                        <div class="package-price-total">
+                            <div class="package-total-label">Total for [X] Staff</div>
+                            <div class="package-total-amount">[Total]</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accelerator Package (Recommended) -->
+                    <div class="pricing-package recommended">
+                        <div class="recommended-badge">Recommended</div>
+                        <div class="package-hours">Accelerator</div>
+                        <div class="package-label">15 Hours of Career Coaching</div>
+                        <div class="package-price-individual">$2,700</div>
+                        <div class="package-price-per">per employee</div>
+                        <div class="package-price-total">
+                            <div class="package-total-label">Total for [X] Staff</div>
+                            <div class="package-total-amount">[Total]</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Transformation Package -->
+                    <div class="pricing-package">
+                        <div class="package-hours">Transformation</div>
+                        <div class="package-label">20 Hours of Career Coaching</div>
+                        <div class="package-price-individual">$3,600</div>
+                        <div class="package-price-per">per employee</div>
+                        <div class="package-price-total">
+                            <div class="package-total-label">Total for [X] Staff</div>
+                            <div class="package-total-amount">[Total]</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="pricing-note">
+                    All packages include initial strategy session with Dan Hahn, M.S. and personalized coach matching.
+                </div>
+            </section>
+            
+            <!-- Services Included -->
+            <section class="services-section">
+                <h2 class="section-header">Services Included in All Packages<span class="section-header-line"></span></h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Background & career review (starting point)
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Skills & strengths interpretation
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Career planning & job search strategy
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Resume & cover letter development
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        LinkedIn profile optimization
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Networking guidance & strategy
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Interview preparation & coaching
+                    </div>
+                    <div class="service-item">
+                        <span class="check-icon">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Industry landscape navigation
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Next Steps Section -->
+            <section class="next-steps-section">
+                <h2 class="section-header">Next Steps<span class="section-header-line"></span></h2>
+                <div class="next-steps-content">
+                    <div class="next-steps-grid">
+                        <div class="next-step-item">
+                            <div class="next-step-number"><span>1</span></div>
+                            <div class="next-step-content">
+                                <h4>Select Your Package</h4>
+                                <p>Review the options above and choose the level of support that best fits your team's needs.</p>
+                            </div>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="next-step-number"><span>2</span></div>
+                            <div class="next-step-content">
+                                <h4>Schedule Kickoff Call</h4>
+                                <p>We'll set up a brief call to finalize details and establish the employee onboarding timeline.</p>
+                            </div>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="next-step-number"><span>3</span></div>
+                            <div class="next-step-content">
+                                <h4>Begin Transitions</h4>
+                                <p>Each employee will receive outreach to schedule their personal intake session.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Flexible Service Guarantee -->
+            <section class="guarantee-section">
+                <div class="guarantee-content">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2DA3CB" stroke-width="2"/>
+                            <path d="M8 12L11 15L16 9" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="guarantee-text">
+                        <h4>Flexible Service Guarantee</h4>
+                        <p>Each participant receives [X] dedicated hours of career coaching. Employees must complete their intake session within [X] days of separation to be eligible. Participants have up to [X] months from their intake session to use their hours. [Describe unused hours policy — e.g., prorated refund, credit toward future services, etc.]</p>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+        
+        <!-- Footer / Contact -->
+        <footer class="proposal-footer">
+            <div class="liaison-info">
+                <div class="liaison-label">Lead Liaison for [Client Name]</div>
+                <div class="liaison-name">Dan Hahn, M.S.</div>
+                <div class="liaison-title">CEO & Founder</div>
+                <div class="liaison-contact">
+                    dan@aportlandcareer.com&nbsp;&nbsp;|&nbsp;&nbsp;503-470-9544
+                </div>
+            </div>
+            <div class="footer-logo">
+                <div class="logo-container" style="width: 70px;">
+                    <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career" style="width: 70px; height: auto; filter: brightness(0) invert(1); opacity: 0.9;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <svg style="display: none; width: 70px; height: 35px;" viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="40" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="white">A PORTLAND</text>
+                        <text x="40" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                    </svg>
+                </div>
+                <div class="footer-tagline">www.aportlandcareer.com</div>
+            </div>
+        </footer>
+        
+    </div>
+    
+    <!-- Page Number -->
+    <div class="page-number">Page 2 of 2</div>
+    
+</div>
+
+</body>
+</html>
