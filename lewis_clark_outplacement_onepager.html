@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Career Coaching Benefit | Lewis & Clark x A Portland Career</title>
+    <!--
+      ONE-PAGER for Helen Howell (L&C CHRO) to forward to the un-booked outplacement cohort.
+      THREE spots to finalize once Dan pastes his 1-hour CRM booking link (search: __BOOKING_URL__):
+        1) the QR image `data=` param (then swap to an inline base64 QR for a forward-safe PDF)
+        2) the big spelled-out link text + href
+        3) the "Book your session" button href
+      Built 2026-06-12 from employee_welcome_guide.html. Self-contained, prints 8.5x11.
+    -->
+    <style>
+        :root {
+            --university-navy: #16163f;
+            --transition-blue: #2DA3CB;
+            --accent-light: #e8f4f8;
+            --navy-soft: #2a2a5e;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: #e9ecef;
+            font-size: 9.5pt;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #16163f 0%, #16163f 60%, #2DA3CB 60%, #2DA3CB 100%);
+        }
+
+        .content-wrapper {
+            padding: 0.4in 0.55in 0.3in;
+            height: calc(11in - 5px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--university-navy);
+        }
+
+        .header-content { flex: 1; }
+
+        .guide-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 21pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            letter-spacing: -0.4px;
+            margin-bottom: 5px;
+        }
+
+        .guide-subtitle {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 10pt;
+            color: var(--transition-blue);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .logo-container { width: 80px; }
+        .header-logo { width: 80px; height: auto; }
+
+        /* Welcome */
+        .welcome-message {
+            background: var(--accent-light);
+            padding: 15px 18px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--transition-blue);
+        }
+        .welcome-message p {
+            font-size: 9.5pt;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+        .welcome-message p:first-of-type { margin-bottom: 8px; }
+
+        /* Section headers */
+        .section-header {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 11px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #2DA3CB, transparent);
+        }
+
+        /* Services */
+        .services-section { margin-bottom: 20px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px 24px;
+        }
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+        .check-icon { flex-shrink: 0; width: 14px; height: 14px; margin-top: 1px; }
+        .check-icon svg { width: 100%; height: 100%; }
+
+        /* Booking CTA (hero) */
+        .booking-cta {
+            background: var(--university-navy);
+            color: white;
+            border-radius: 6px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+        .qr-wrap {
+            flex-shrink: 0;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            width: 150px;
+        }
+        .qr-wrap img { width: 130px; height: 130px; display: block; }
+        .qr-caption {
+            font-size: 7.5pt;
+            color: var(--university-navy);
+            font-weight: 600;
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .booking-text { flex: 1; }
+        .booking-text h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .booking-text p {
+            font-size: 9.5pt;
+            line-height: 1.55;
+            color: rgba(255,255,255,0.92);
+            margin-bottom: 12px;
+        }
+        .book-btn {
+            display: inline-block;
+            background: var(--transition-blue);
+            color: white;
+            font-weight: 700;
+            font-size: 10.5pt;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 9px;
+        }
+        .book-link-line {
+            font-size: 8.5pt;
+            color: rgba(255,255,255,0.85);
+            word-break: break-all;
+        }
+        .book-link-line a {
+            color: var(--transition-blue);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* How it works (compact) */
+        .process-section { margin-bottom: 18px; }
+        .steps-row { display: flex; gap: 18px; }
+        .mini-step { flex: 1; }
+        .mini-step .num {
+            font-family: Georgia, serif;
+            font-weight: 700;
+            color: var(--transition-blue);
+            font-size: 11pt;
+            margin-bottom: 2px;
+        }
+        .mini-step .st-title {
+            font-family: Georgia, serif;
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--university-navy);
+            margin-bottom: 3px;
+        }
+        .mini-step p {
+            font-size: 8.5pt;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        /* Team */
+        .team-section {
+            margin-bottom: 16px;
+            padding: 13px 16px;
+            background: #fafafa;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        .team-section p {
+            font-size: 9pt;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .guide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            margin-top: auto;
+            border-top: 1px solid #ddd;
+        }
+        .footer-logo-section { display: flex; align-items: center; gap: 14px; }
+        .footer-info { font-size: 9pt; color: #666; }
+        .footer-tagline { font-size: 9pt; color: var(--transition-blue); font-style: italic; }
+        .footer-contact { font-size: 8.5pt; color: #666; }
+        .footer-contact .hl { color: var(--university-navy); font-weight: 600; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; }
+            a { text-decoration: underline !important; }
+        }
+        @media screen {
+            .page { box-shadow: 0 4px 24px rgba(0,0,0,0.15); margin: 20px auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="top-accent"></div>
+
+    <div class="content-wrapper">
+
+        <!-- Header -->
+        <header class="guide-header">
+            <div class="header-content">
+                <h1 class="guide-title">Your Career Coaching Benefit Is Ready</h1>
+                <div class="guide-subtitle">Provided by Lewis &amp; Clark College in partnership with A Portland Career</div>
+            </div>
+            <div class="logo-container">
+                <img src="https://www.aportlandcareer.com/wp-content/uploads/2020/06/APC-Logo-trans.png" alt="A Portland Career Logo" class="header-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <svg style="display: none; width: 80px; height: 55px;" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="116" height="56" rx="4" fill="none" stroke="#16163f" stroke-width="2"/>
+                    <text x="60" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#16163f">A PORTLAND</text>
+                    <text x="60" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#2DA3CB">CAREER</text>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Welcome -->
+        <section class="welcome-message">
+            <p>When Lewis &amp; Clark partnered with us earlier this year, they arranged dedicated, professional career coaching for you, <strong>fully covered, at no cost to you</strong>. If you have not used it yet, that is completely fine. Your benefit is still here and ready whenever you are.</p>
+            <p>This is real, one-on-one support to help you land your next opportunity with confidence. Booking takes a single step, and we will take it from there.</p>
+        </section>
+
+        <!-- What's Included -->
+        <section class="services-section">
+            <h2 class="section-header">What's Included<span class="section-header-line"></span></h2>
+            <div class="services-grid">
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A 1-on-1 strategy session with Dan Hahn, M.S. (CEO &amp; Founder)</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>15 hours of dedicated coaching, tailored to your goals</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Resume and cover letter development</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>LinkedIn profile optimization</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Interview preparation and coaching</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Job search strategy and networking guidance</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Career exploration and direction</div>
+                <div class="service-item"><span class="check-icon"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4.5L6.5 11.5L3 8" stroke="#2DA3CB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Professional development and skill building</div>
+            </div>
+        </section>
+
+        <!-- Booking CTA (hero) -->
+        <section class="booking-cta">
+            <div class="qr-wrap">
+                <!-- __BOOKING_URL__ : replace `data=` with Dan's 1hr CRM slot link (URL-encoded); then swap to inline base64 for a forward-safe PDF -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYAQMAAACEqAqfAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEU0lEQVR4nO3dS3LbMAyAYWS88DJH0FF8NOloOoqO4KUXHrMWXgLddOJ2phvmxyZRKX7qCkMClCJCEP8zWolt/4dTu9rIWf/t+cvn88di1+t+/02m/doGMrCwsMa17iIxd7Prz+cUjalYHzHnrgPP63KjyIyFhTW0panjodbc3J4fnnMiHooeOScsHdywsLB+kqXSpfktYmuVyXLO9TngyQgLC+sHWxqrSK5Fmu5pjoGT5pzWsLCwsP7N8uis2ZYzq/j+p+3XXifp1jkeWFhYI1slNHWcdDnzvDetz31gz0m6zjlVqwQWFtawVh9z1k321JIx2drleuSovPHPgYWFNYpVU8cmnoPWfeRcU8lcUsvZcpD0E7GwsLDetVb7XY9+2BkRvXeKukgJXef0+euMhYU1uGX1U62nbjJnjjGrNd8PaZT9j58ZWaUGFhbWoNaeOi6l6nGye0Us5+i1r0W0KVz2Q5/WsLG+DBYW1rCWeCp5+BKj2VGQ1uUcH9/jsE9HsmpYWFhY71kxt/k2R/XLca7dHhd1kjV6wdrTkZeJWFhYY1piOUfijEj0fsVR3w/N7XjoVznH78fCwhrROtYeXl/9OuY8S+Zny6IPo/uhyF9YWFhDWhqX5vVVib5L1k9jruUcKWdE8v0Y39xgYWFhvWFZbbaWXEs+W0Wvt1KrbS1rt3lj5C8sLKwhLV/nSPR+vVUzx/nVOlfi2Zv9crXxWwxhYWENavkSI7c1+S2xzDkaH61biyw5Pxo2WFhY41rZTvE9zL0uOfxZk43nQzIur2sTLCwsrO+sPF6mcYrWje+PXr835N/+KLVaCywsrJEt+W35cjnOksX+x56VD1lyP5QbJSwsrFEtyddcbscSJK219GFux4xi1ZyDhYU1pvVaX5WuDxOP2+urZ5tzl3Otr7qNhYWF9Z6VJVgLvX+NW9byTv/NNk65HypN42MuFhbWgJbYay7Sfee0huWkxW50VMr3kkt9FQsLa1ArtzXdWbLF6ih1P+RnTuM9uf7aAgsLa0jr6MN4dO/HrOUs+u0lOdlA3fxgYWFhvWH5+zDWqnFxiR6O2Dl3JTxfNbu2aJHPsLCwRrf8lnn/UV7dF6ureOQHUcXe6W+WrOo6BwsLa0xLP/1ja5El+jJLjEt+O8xyjuTfdGlqtT7nYGFhjWtJ2ZqoZWuVVbzd0h6HnYdJfOCsP7GwsLDesPqYWyxfLLwpPMW59sxX8uF1k9fDJFhYWONZJXvY/idzzn59yfdhus8KTfF3KXWBtA8sgoWFNa7l7ZRyRiTfm9OCivdlog/Tvso5tb6KhYU1ouX92fI9ZDG0HXuY5aM+ZGp9bPa/wcLCwvpby8PXOZ7fppe6if/y+p1TLCysH2Nlztli/mTjeUakRU8nYxEsLKyRLY/zMVfi3PtqZ0S8blJesMuHNlurYGFhjWyV2Kz8sZdH5tiqxNzuPXzNUeWjYx5YWFhY31kE8f/iF5XfTlJ4B460AAAAAElFTkSuQmCC" alt="Scan to book your session">
+                <div class="qr-caption">Scan to book</div>
+            </div>
+            <div class="booking-text">
+                <h3>Book your 1-hour strategy session with Dan</h3>
+                <p>Start with a focused, one-hour session where Dan helps you map out a plan for your 15 hours. Your time is already covered by Lewis &amp; Clark, so there is nothing to pay.</p>
+                <!-- __BOOKING_URL__ : button href -->
+                <a class="book-btn" href="https://apc-intake-staging.web.app/session/QT5OWNOfCofZMEQ790DpSo16H9m2?org=lewis-clark" target="_blank">Book your session &rarr;</a>
+                <!-- __BOOKING_URL__ : spelled-out link (show + link the full URL) -->
+                <div class="book-link-line">Prefer to type it in? Visit <a href="https://apc-intake-staging.web.app/session/QT5OWNOfCofZMEQ790DpSo16H9m2?org=lewis-clark" target="_blank">https://apc-intake-staging.web.app/session/QT5OWNOfCofZMEQ790DpSo16H9m2?org=lewis-clark</a></div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="process-section">
+            <h2 class="section-header">How It Works<span class="section-header-line"></span></h2>
+            <div class="steps-row">
+                <div class="mini-step">
+                    <div class="num">1</div>
+                    <div class="st-title">Book your session</div>
+                    <p>Scan the code or use the link above to grab a time with Dan. No cost, no paperwork.</p>
+                </div>
+                <div class="mini-step">
+                    <div class="num">2</div>
+                    <div class="st-title">Build your plan</div>
+                    <p>In that first hour, you and Dan shape a plan and match you with the right coach for your goals.</p>
+                </div>
+                <div class="mini-step">
+                    <div class="num">3</div>
+                    <div class="st-title">Use your hours</div>
+                    <p>Work through your 15 hours on your own schedule, with up to 9 months to use them.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="team-section">
+            <h2 class="section-header">You're in Good Hands<span class="section-header-line"></span></h2>
+            <p>You'll be supported by a team that understands where you're coming from. Our specialist coaches have worked inside institutions like PSU, PCC, and Lewis &amp; Clark, so we know the culture, the language, and the unique strengths higher ed professionals bring to the table. We've helped many people navigate this kind of transition, and we're here to help you too.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="guide-footer">
+            <div class="footer-logo-section">
+                <div class="footer-info">www.aportlandcareer.com</div>
+                <div class="footer-tagline">Supporting your next chapter</div>
+            </div>
+            <div class="footer-contact">Questions? <span class="hl">dan@aportlandcareer.com</span></div>
+        </footer>
+
+    </div>
+
+</div>
+
+</body>
+</html>
