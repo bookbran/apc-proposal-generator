@@ -2,3 +2,6 @@
 Thumbs.db
 desktop.ini
 *.tmp
+
+# Dependencies (never commit)
+node_modules/
