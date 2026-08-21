@@ -5,3 +5,9 @@ desktop.ini
 
 # Dependencies (never commit)
 node_modules/
+
+# Generated proposal outputs (client deliverables, regenerable)
+*.pdf
+*_package.html
+preview-*.png
+proposal_preview.png
